@@ -1,0 +1,44 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+
+  <script type="text/javascript">
+    function invoke() {
+      const url = "http://localhost:8080/t/giphyfn/getgif"
+      //const url = "http://lb.fnservice.io:90/t/giphyfn/getgif"
+
+      fetch(url, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({q:document.getElementById('q').value})
+      })
+      .then(data => {return data.json() })
+      .then(res => {
+        console.log(res);
+        insertImg(res);
+      })
+
+    }
+
+    function insertImg(url) {
+      var img = document.createElement("img");
+      img.src = url;
+      img.height = "300";
+      var src = document.getElementById("img_result");
+      src.appendChild(img);
+    }
+  </script>
+
+</head>
+
+<body style="margin: 30px;">
+  <h1>Giphy Fn</h1>
+
+  <input id="q" placeholder="search for..." style="padding: 10px; font-size: 20px;"></input>
+  <button type="button" onclick="invoke();" style="padding: 10px; font-size: 20px;">Invoke</button>
+
+  <div id="img_result" style="margin-top: 10px;"></div>
+</body>
+
+</html>

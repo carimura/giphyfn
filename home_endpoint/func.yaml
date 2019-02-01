@@ -1,0 +1,11 @@
+schema_version: 20180708
+name: home_endpoint
+version: 0.0.14
+runtime: python
+entrypoint: python3 func.py
+format: http-stream
+memory: 256
+triggers:
+- name: home_endpoint
+  type: http
+  source: /home_endpoint

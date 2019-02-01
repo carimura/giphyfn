@@ -1,0 +1,8 @@
+name: giphyfn
+description:
+  - Hey Google, invoke function
+  - OK, what function? The ones available are... (extra credit, get all fns)
+  - giphy flow function
+  - What would you like to search for?
+  - "Cats"
+  - Ok, initiating flow function
