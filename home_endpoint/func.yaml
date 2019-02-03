@@ -1,10 +1,9 @@
 schema_version: 20180708
 name: home_endpoint
-version: 0.0.21
-runtime: python
-entrypoint: python3 func.py
+version: 0.0.67
+runtime: node
+entrypoint: node func.js
 format: http-stream
-memory: 256
 triggers:
 - name: home_endpoint
   type: http

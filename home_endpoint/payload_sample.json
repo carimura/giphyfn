@@ -1,0 +1,113 @@
+{
+    "responseId": "66c0ec17-a8e5-4fcc-b0cc-bacb6757a3d2",
+    "queryResult": {
+        "queryText": "dogs",
+        "action": "searchPhrase",
+        "parameters": {
+            "searchPhrase": "dogs"
+        },
+        "allRequiredParamsPresent": true,
+        "fulfillmentText": "ok, triggering function",
+        "fulfillmentMessages": [
+            {
+                "text": {
+                    "text": [
+                        "ok, triggering function"
+                    ]
+                }
+            }
+        ],
+        "outputContexts": [
+            {
+                "name": "projects/chad-72ebd/agent/sessions/15490590857121360101105/contexts/google_assistant_input_type_voice",
+                "parameters": {
+                    "searchPhrase": "dogs",
+                    "searchPhrase.original": "dogs"
+                }
+            },
+            {
+                "name": "projects/chad-72ebd/agent/sessions/15490590857121360101105/contexts/actions_capability_audio_output",
+                "parameters": {
+                    "searchPhrase": "dogs",
+                    "searchPhrase.original": "dogs"
+                }
+            },
+            {
+                "name": "projects/chad-72ebd/agent/sessions/15490590857121360101105/contexts/actions_capability_media_response_audio",
+                "parameters": {
+                    "searchPhrase": "dogs",
+                    "searchPhrase.original": "dogs"
+                }
+            }
+        ],
+        "intent": {
+            "name": "projects/chad-72ebd/agent/intents/02bcf585-5305-4475-9fbd-fdc61ef4409b",
+            "displayName": "trigger function"
+        },
+        "intentDetectionConfidence": 1.0,
+        "diagnosticInfo": {
+            "end_conversation": true
+        },
+        "languageCode": "en-us"
+    },
+    "originalDetectIntentRequest": {
+        "source": "google",
+        "version": "2",
+        "payload": {
+            "isInSandbox": true,
+            "surface": {
+                "capabilities": [
+                    {
+                        "name": "actions.capability.AUDIO_OUTPUT"
+                    },
+                    {
+                        "name": "actions.capability.MEDIA_RESPONSE_AUDIO"
+                    }
+                ]
+            },
+            "inputs": [
+                {
+                    "rawInputs": [
+                        {
+                            "query": "dogs",
+                            "inputType": "VOICE"
+                        }
+                    ],
+                    "arguments": [
+                        {
+                            "rawText": "dogs",
+                            "textValue": "dogs",
+                            "name": "text"
+                        }
+                    ],
+                    "intent": "actions.intent.TEXT"
+                }
+            ],
+            "user": {
+                "locale": "en-US",
+                "userId": "15490591000271876380133"
+            },
+            "conversation": {
+                "conversationId": "15490590857121360101105",
+                "type": "ACTIVE",
+                "conversationToken": "[\"02bcf585-5305-4475-9fbd-fdc61ef4409b_id_dialog_context\",\"actions_capability_audio_output\",\"actions_capability_media_response_audio\",\"google_assistant_input_type_voice\",\"trigger_function_dialog_context\",\"trigger_function_dialog_params_searchphrase\"]"
+            },
+            "availableSurfaces": [
+                {
+                    "capabilities": [
+                        {
+                            "name": "actions.capability.WEB_BROWSER"
+                        },
+                        {
+                            "name": "actions.capability.AUDIO_OUTPUT"
+                        },
+                        {
+                            "name": "actions.capability.SCREEN_OUTPUT"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "session": "projects/chad-72ebd/agent/sessions/15490590857121360101105"
+}
