@@ -1,13 +1,14 @@
 const fdk = require('@fnproject/fdk');
 const request = require('request');
+const FN_SERVER_URL = process.env.FN_SERVER_URL
 
 /* 
   This function takes a webhook from Google Home and triggers
   the flow function.
 
-  input: some long json that Google Home sends
+  input: [json] some long json that Google Home sends
   action: triggers the Flow function
-  output: formatted Json response that Google Home expects
+  output: [json] response that Google Home expects
 */
 
 fdk.handle(function (input) {
@@ -17,16 +18,13 @@ fdk.handle(function (input) {
 async function callFlow(input) {
   var searchPhrase = "cats"
 
-  if (input.queryResult != undefined) {
-    if (input.queryResult.queryText != undefined) {
-      searchPhrase = input.queryResult.queryText
-    }
+  if (input.queryResult && input.queryResult.queryText) {
+    searchPhrase = input.queryResult.queryText
   }
   console.log("searchPhrase --> " + searchPhrase)
 
-  var url = "https://carimura.ngrok.io/t/giphyfn/flow"
+  var url = FN_SERVER_URL + "/t/giphyfn/flow"
 
-  console.log("Requesting " + url)
   return new Promise((resolve, reject) => {
     request.post(url, {
       headers: { 'content-type': 'application/x-www-form-urlencoded' },

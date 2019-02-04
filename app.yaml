@@ -1,8 +1,5 @@
 name: giphyfn
 description:
-  - Hey Google, invoke function
-  - OK, what function? The ones available are... (extra credit, get all fns)
-  - giphy flow function
-  - What would you like to search for?
-  - "Cats"
-  - Ok, initiating flow function
+todo:
+  - diagram showing flow
+  - how to do open ended answers? not just from select home list.
