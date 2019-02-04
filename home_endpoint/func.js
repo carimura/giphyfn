@@ -18,8 +18,8 @@ fdk.handle(function (input) {
 async function callFlow(input) {
   var searchPhrase = "cats"
 
-  if (input.queryResult && input.queryResult.queryText) {
-    searchPhrase = input.queryResult.queryText
+  if (input.queryResult && input.queryResult.parameters && input.queryResult.parameters.searchPhrase) {
+    searchPhrase = input.queryResult.parameters.searchPhrase
   }
   console.log("searchPhrase --> " + searchPhrase)
 
@@ -30,7 +30,7 @@ async function callFlow(input) {
       headers: { 'content-type': 'application/x-www-form-urlencoded' },
       body: searchPhrase
     },
-      function (err, resp, body) {
+      async function (err, resp, body) {
         if (err) { return console.log(err) }
         r = { 'fulfillmentText': `OK I've triggered the flow function with search term ${searchPhrase}` }
         resolve(r)

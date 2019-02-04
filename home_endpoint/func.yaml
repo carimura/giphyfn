@@ -1,9 +1,10 @@
 schema_version: 20180708
 name: home_endpoint
-version: 0.0.76
+version: 0.0.82
 runtime: node
 entrypoint: node func.js
 format: http-stream
+idle_timeout: 3600
 triggers:
 - name: home_endpoint
   type: http

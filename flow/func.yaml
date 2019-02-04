@@ -1,11 +1,12 @@
 schema_version: 20180708
 name: flow
-version: 0.0.50
+version: 0.0.60
 runtime: java
 build_image: fnproject/fn-java-fdk-build:jdk9-1.0.83
 run_image: fnproject/fn-java-fdk:jdk9-1.0.83
 cmd: com.example.fn.FlowFunction::handleRequest
 format: http-stream
+idle_timeout: 3600
 triggers:
 - name: flow
   type: http

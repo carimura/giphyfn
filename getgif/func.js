@@ -18,7 +18,7 @@ fdk.handle(function (input) {
   var fmt = "string"
 
   var url = "http://api.giphy.com/v1/gifs/search?q=" + q + "&api_key=" + key + "&offset=" + offset + "&fmt=" + fmt + "&limit=1"
-
+  
   return new Promise((resolve, reject) => {
 
     request(url, { json: true }, (err, res, body) => {

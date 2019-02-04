@@ -24,26 +24,30 @@ public class FlowFunction implements Serializable {
     }
 
     public void handleRequest(String input) {
+        System.out.println("Starting Flow Function");
+
         Flow flow = Flows.currentFlow();
 
         GiphyRequest giphyRequest = new GiphyRequest();
         giphyRequest.q = input;
 
         FlowFuture<SlackResponse> f1 = flow.invokeFunction(getgifFuncID, giphyRequest, GiphyResponse.class)
-            .thenCompose((giphyResponse) -> {
-                SlackRequest slackRequest = new SlackRequest();
-                slackRequest.image_url = giphyResponse.response;
-                slackRequest.msg = "Image from Request 1";
-                return currentFlow().invokeFunction(slackFuncID, slackRequest, SlackResponse.class);
-            });
+                .thenCompose((giphyResponse) -> {
+                    SlackRequest slackRequest = new SlackRequest();
+                    slackRequest.image_url = giphyResponse.response;
+                    slackRequest.msg = "Image from Request 1";
+                    System.out.println(slackRequest.image_url);
+                    return currentFlow().invokeFunction(slackFuncID, slackRequest, SlackResponse.class);
+                });
 
         FlowFuture<SlackResponse> f2 = flow.invokeFunction(getgifFuncID, giphyRequest, GiphyResponse.class)
-            .thenCompose((giphyResponse) -> {
-                SlackRequest slackRequest = new SlackRequest();
-                slackRequest.image_url = giphyResponse.response;
-                slackRequest.msg = "Image from Request 2";
-                return currentFlow().invokeFunction(slackFuncID, slackRequest, SlackResponse.class);
-            });
+                .thenCompose((giphyResponse) -> {
+                    SlackRequest slackRequest = new SlackRequest();
+                    slackRequest.image_url = giphyResponse.response;
+                    slackRequest.msg = "Image from Request 2";
+                    System.out.println(slackRequest.image_url);
+                    return currentFlow().invokeFunction(slackFuncID, slackRequest, SlackResponse.class);
+                });
 
         flow.allOf(f1, f2);
     }
