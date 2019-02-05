@@ -19,8 +19,10 @@ public class FlowFunction implements Serializable {
 
     @FnConfiguration
     public void configure(RuntimeContext ctx) {
-        getgifFuncID = ctx.getConfigurationByKey("GETGIF_FUNC_ID").orElseThrow(() -> new RuntimeException("Missing GetGif Func ID"));
-        slackFuncID = ctx.getConfigurationByKey("SLACK_FUNC_ID").orElseThrow(() -> new RuntimeException("Missing Slack Func ID"));
+        getgifFuncID = ctx.getConfigurationByKey("GETGIF_FUNC_ID")
+                .orElseThrow(() -> new RuntimeException("Missing GetGif Func ID"));
+        slackFuncID = ctx.getConfigurationByKey("SLACK_FUNC_ID")
+                .orElseThrow(() -> new RuntimeException("Missing Slack Func ID"));
     }
 
     public void handleRequest(String input) {
@@ -49,6 +51,17 @@ public class FlowFunction implements Serializable {
                     return currentFlow().invokeFunction(slackFuncID, slackRequest, SlackResponse.class);
                 });
 
-        flow.allOf(f1, f2);
+        flow.allOf(f1, f2).whenComplete((v, throwable) -> {
+            if (throwable != null) {
+                SlackRequest slackRequest = new SlackRequest();
+                slackRequest.msg = "There was an error!";
+                currentFlow().invokeFunction(slackFuncID, slackRequest, SlackResponse.class);
+
+            } else {
+                SlackRequest slackRequest = new SlackRequest();
+                slackRequest.msg = "Completed Flow Successfully!";
+                currentFlow().invokeFunction(slackFuncID, slackRequest, SlackResponse.class);
+            }
+        });
     }
 }
