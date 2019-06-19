@@ -32,7 +32,7 @@ docker run -p3000:3000 -e API_URL=http://$DOCKER_LOCALHOST:8080 -e COMPLETER_BAS
 
 ## Helidon Version
 
-If Changes: `maven package`
+If Changes: `mvn package`
 
 To Run: `java -jar target/helidon-quickstart-mp.jar`
 
