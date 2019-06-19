@@ -26,7 +26,7 @@ public class FlowFunction implements Serializable {
     }
 
     public void handleRequest(String input) {
-        System.out.println("Starting Flow Function");
+        System.out.println("Starting Flow Function...");
 
         Flow flow = Flows.currentFlow();
 
